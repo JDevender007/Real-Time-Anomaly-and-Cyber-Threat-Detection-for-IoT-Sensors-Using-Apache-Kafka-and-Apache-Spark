@@ -1,0 +1,48 @@
+{
+  "meta_learner_comparison": {
+    "LogisticRegression": {
+      "acc": 0.9744,
+      "f1": 0.9757575757575757,
+      "auc": 0.9849136319659642
+    },
+    "XGBoost": {
+      "acc": 0.9751,
+      "f1": 0.9763757115749525,
+      "auc": 0.9893747480205892
+    },
+    "RandomForest": {
+      "acc": 0.9752,
+      "f1": 0.9764504795366062,
+      "auc": 0.9895226035858811
+    },
+    "GradientBoosting": {
+      "acc": 0.9751,
+      "f1": 0.9763667425968109,
+      "auc": 0.9894556063561545
+    }
+  },
+  "best_meta_learner": "RandomForest",
+  "final_metrics": {
+    "accuracy": 0.9752,
+    "f1": 0.9764504795366062,
+    "precision": 0.994535519125683,
+    "recall": 0.9590114245744928,
+    "roc_auc": 0.9895226035858811,
+    "confusion_matrix": [
+      [
+        18442,
+        113
+      ],
+      [
+        879,
+        20566
+      ]
+    ]
+  },
+  "base_models": {
+    "physical_if_oof_f1": 0.17715501291485675,
+    "physical_ae_oof_f1": 0.6858673481925638,
+    "cyber_rf_oof_f1": 0.9965694647419493,
+    "cyber_xgb_oof_f1": 0.9979809202084264
+  }
+}

@@ -1,0 +1,92 @@
+simulation:
+  rate: 10
+  num_devices: 50
+  
+  devices:
+    device_prefix: device
+    id_padding: 3
+    
+  sensor_ranges:
+    temperature:
+      min: 20.0
+      max: 35.0
+      unit: celsius
+    humidity:
+      min: 30.0
+      max: 80.0
+      unit: percent
+    pressure:
+      min: 950.0
+      max: 1050.0
+      unit: hpa
+    voltage:
+      min: 3.0
+      max: 5.0
+      unit: volts
+    battery:
+      min: 0.0
+      max: 100.0
+      unit: percent
+    cpu_usage:
+      min: 0.0
+      max: 100.0
+      unit: percent
+    memory_usage:
+      min: 0.0
+      max: 100.0
+      unit: percent
+    network_bytes:
+      min: 0
+      max: 10000
+      unit: bytes
+    packet_count:
+      min: 0
+      max: 100
+      unit: packets
+    packet_rate:
+      min: 0.0
+      max: 50.0
+      unit: pps
+
+  network:
+    protocols: [TCP, UDP, ICMP]
+    local_ip_prefix: 10.0.0
+    port_range:
+      min: 1024
+      max: 65535
+
+  physical_anomaly:
+    scenarios:
+      - name: sudden_deviation
+        description: Abrupt change from normal behavior
+        probability: 0.02
+      - name: sensor_drift
+        description: Gradual deviation over time
+        probability: 0.01
+      - name: sensor_spike
+        description: Short-duration abnormal value
+        probability: 0.03
+      - name: abnormal_process
+        description: Unrealistic process state
+        probability: 0.01
+      - name: sensor_inconsistency
+        description: Related measurements become inconsistent
+        probability: 0.01
+
+  cyber_attack:
+    scenarios:
+      - name: ddos
+        description: High packet rate and traffic volume
+        probability: 0.02
+      - name: spoofing
+        description: Unexpected source identity
+        probability: 0.01
+      - name: brute_force
+        description: Repeated authentication attempts
+        probability: 0.01
+      - name: port_scan
+        description: Many destination ports probed
+        probability: 0.02
+      - name: false_data_injection
+        description: Manipulated telemetry values
+        probability: 0.01

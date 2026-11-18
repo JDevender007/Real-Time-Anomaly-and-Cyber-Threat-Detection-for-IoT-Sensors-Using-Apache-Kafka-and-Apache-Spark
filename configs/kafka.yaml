@@ -1,0 +1,33 @@
+kafka:
+  bootstrap_servers: localhost:9092
+  client_id: iot-security-producer
+  
+  producer:
+    acks: all
+    retries: 3
+    retry_backoff_ms: 100
+    linger_ms: 10
+    batch_size: 16384
+    compression_type: lz4
+    buffer_memory: 33554432
+
+  consumer:
+    group_id: iot-security-consumer
+    auto_offset_reset: latest
+    max_poll_records: 500
+    enable_auto_commit: false
+
+  topics:
+    sensor_raw: iot.sensor.raw
+    network_raw: iot.network.raw
+    physical_replay: iot.physical.replay
+    cyber_replay: iot.cyber.replay
+    physical_anomaly: iot.physical.anomaly
+    cyber_threat: iot.cyber.threat
+    alerts: iot.alerts
+    metrics: iot.metrics
+    system_events: iot.system.events
+
+  retention_ms: 604800000
+  replication_factor: 1
+  num_partitions: 3

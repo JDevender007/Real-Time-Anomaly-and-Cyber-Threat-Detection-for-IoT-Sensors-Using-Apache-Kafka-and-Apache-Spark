@@ -1,0 +1,15 @@
+# Risk engine configuration
+thresholds:
+  low: 0.3
+  medium: 0.6
+  high: 0.85
+
+weights:
+  physical: 0.5
+  cyber: 0.5
+
+actions:
+  low: MONITOR
+  medium: ALERT_ADMIN
+  high: ISOLATE_DEVICE
+  critical: BLOCK_AND_ALERT

@@ -1,0 +1,203 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: iot-security-postgres
+    environment:
+      POSTGRES_DB: iot_security
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d iot_security"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  kafka:
+    image: apache/kafka:3.7.0
+    container_name: iot-security-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LOG_RETENTION_HOURS: 168
+      CLUSTER_ID: "MkU3OEVBNTcwNTJENDM2Qk"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  spark-master:
+    image: apache/spark:3.5.1
+    container_name: iot-security-spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    environment:
+      - SPARK_MASTER_HOST=spark-master
+      - SPARK_MASTER_PORT=7077
+      - SPARK_MASTER_WEBUI_PORT=8080
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - spark_data:/opt/spark/work-dir
+
+  spark-worker:
+    image: apache/spark:3.5.1
+    container_name: iot-security-spark-worker
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    environment:
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    depends_on:
+      - spark-master
+    volumes:
+      - spark_data:/opt/spark/work-dir
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: iot-security-api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/iot_security
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      SPARK_MASTER: spark://spark-master:7077
+      IOT_SEC_API_KEY: dev-api-key-12345
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      spark-master:
+        condition: service_started
+    volumes:
+      - ./models:/app/models
+      - ./configs:/app/configs
+      - ./logs:/app/logs
+      - ./dashboard/web:/app/dashboard/web
+      - ./experiments/results:/app/experiments/results
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dashboard
+    container_name: iot-security-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/iot_security
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      PYTHONUNBUFFERED: "1"
+    command: streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+    depends_on:
+      api:
+        condition: service_healthy
+    volumes:
+      - ./configs:/app/configs
+      - ./dashboard:/app/dashboard
+      - ./logs:/app/logs
+
+  simulator:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.simulator
+    container_name: iot-security-simulator
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      PYTHONUNBUFFERED: "1"
+    command: python scripts/start_simulator.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+    volumes:
+      - ./configs:/app/configs
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  streaming:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.streaming
+    container_name: iot-security-streaming
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/iot_security
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      STREAMING_MODE: python
+      PYTHONUNBUFFERED: "1"
+    command: python scripts/start_streaming.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./models:/app/models
+      - ./configs:/app/configs
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  spark-job:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.spark
+    container_name: iot-security-spark-job
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      kafka:
+        condition: service_healthy
+      spark-master:
+        condition: service_started
+    volumes:
+      - spark_ivy:/home/spark/.ivy2
+    restart: unless-stopped
+
+  replayer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.replayer
+    container_name: iot-security-replayer
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      PYTHONUNBUFFERED: "1"
+      REPLAY_PHYSICAL_RATE: "10"
+      REPLAY_CYBER_RATE: "10"
+      REPLAY_SAMPLE_SIZE: "30000"
+    command: python scripts/replay_dataset.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./configs:/app/configs
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  spark_data:
+  spark_ivy:

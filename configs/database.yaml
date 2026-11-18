@@ -1,0 +1,40 @@
+database:
+  postgresql:
+    host: localhost
+    port: 5432
+    name: iot_security
+    user: postgres
+    password: postgres
+    pool_size: 10
+    max_overflow: 20
+    pool_timeout: 30
+    pool_recycle: 1800
+
+  sqlite:
+    path: data/processed/iot_security.db
+
+  # Use PostgreSQL in production, SQLite for development/testing
+  # Set environment variable DATABASE_URL to override
+  
+  tables:
+    devices: devices
+    sensor_readings: sensor_readings
+    network_flows: network_flows
+    physical_anomalies: physical_anomalies
+    cyber_threats: cyber_threats
+    alerts: alerts
+    model_predictions: model_predictions
+    system_metrics: system_metrics
+    attack_events: attack_events
+
+  indexes:
+    - column: timestamp
+      type: btree
+    - column: device_id
+      type: btree
+    - column: severity
+      type: btree
+    - column: attack_type
+      type: btree
+    - column: risk_level
+      type: btree

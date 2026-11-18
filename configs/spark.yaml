@@ -1,0 +1,19 @@
+spark:
+  app_name: IoTSecurityStreaming
+  master: local[*]
+  cores: 2
+  memory: 2g
+  max_offsets_per_trigger: 1000
+  
+  sql:
+    shuffle_partitions: 2
+    broadcast_timeout: 300
+
+  streaming:
+    trigger_interval: "1 second"
+    checkpoint_location: checkpoints/
+    output_mode: append
+
+  serializer:
+    max_result_size: 1g
+    object_inspection_depth: 5

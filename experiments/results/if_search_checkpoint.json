@@ -1,0 +1,33 @@
+{
+  "done_configs": [
+    "{\"contamination\": 0.03, \"features\": \"all_178\", \"max_features\": 0.6, \"n_estimators\": 500}",
+    "{\"contamination\": 0.03, \"features\": \"all_178\", \"max_features\": 0.8, \"n_estimators\": 500}",
+    "{\"contamination\": 0.03, \"features\": \"all_178\", \"max_features\": 1.0, \"n_estimators\": 500}",
+    "{\"contamination\": 0.05, \"features\": \"all_178\", \"max_features\": 0.6, \"n_estimators\": 500}",
+    "{\"contamination\": 0.05, \"features\": \"all_178\", \"max_features\": 0.8, \"n_estimators\": 500}"
+  ],
+  "best_acc": 0.91497,
+  "best_result": {
+    "features": "all_178",
+    "n_feat": 178,
+    "n_estimators": 500,
+    "contamination": 0.03,
+    "max_features": 0.6,
+    "threshold_pct": 1.5,
+    "accuracy": 0.915,
+    "f1": 0.2421,
+    "precision": 0.9053,
+    "recall": 0.1397,
+    "confusion_matrix": [
+      [
+        90139,
+        142
+      ],
+      [
+        8361,
+        1358
+      ]
+    ]
+  },
+  "elapsed": 472.89336490631104
+}

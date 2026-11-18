@@ -1,0 +1,39 @@
+project:
+  name: iot-cyber-physical-security
+  version: "1.0.0"
+  random_seed: 42
+  log_level: INFO
+
+paths:
+  data_root: data
+  raw_data: data/raw
+  processed_data: data/processed
+  models_root: models
+  logs_root: logs
+  experiments_root: experiments
+
+datasets:
+  swat:
+    name: SWaT
+    path: data/raw/swat
+    type: physical
+  wadi:
+    name: WADI
+    path: data/raw/wadi
+    type: physical
+  ciciot2023:
+    name: CICIoT2023
+    path: data/raw/ciciot2023
+    type: cyber
+  edge_iiotset:
+    name: Edge-IIoTSet
+    path: data/raw/edge_iiotset
+    type: cyber
+
+training:
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+  chunk_size: 50000
+  max_rows: 3000000
+  max_per_class: 150000

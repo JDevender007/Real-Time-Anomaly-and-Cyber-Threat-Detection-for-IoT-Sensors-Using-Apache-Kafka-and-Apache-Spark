@@ -1,0 +1,38 @@
+{
+  "rf_edge_iiotset": {
+    "accuracy": 1.0,
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": [
+      [
+        4860,
+        0
+      ],
+      [
+        0,
+        26538
+      ]
+    ],
+    "train_time_s": 2.604710817337036
+  },
+  "xgb_edge_iiotset": {
+    "accuracy": 1.0,
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": [
+      [
+        4860,
+        0
+      ],
+      [
+        0,
+        26538
+      ]
+    ],
+    "train_time_s": 2.82863450050354
+  }
+}

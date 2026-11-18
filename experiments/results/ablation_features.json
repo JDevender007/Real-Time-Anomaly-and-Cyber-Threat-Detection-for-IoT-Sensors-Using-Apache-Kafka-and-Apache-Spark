@@ -1,0 +1,162 @@
+[
+  {
+    "experiment": "ablation_physical_features",
+    "dataset": "swat",
+    "model": "IsolationForest",
+    "metrics": {
+      "accuracy": 0.8591,
+      "precision": 0.049850448654037885,
+      "recall": 0.09881422924901186,
+      "f1": 0.06626905235255136,
+      "false_positive_rate": 0.1003791868548557,
+      "confusion_matrix": [
+        [
+          8541,
+          953
+        ],
+        [
+          456,
+          50
+        ]
+      ],
+      "roc_auc": 0.49666889676941783,
+      "pr_auc": 0.051696028263813955
+    },
+    "training_time_s": 0.9775580000004993,
+    "inference_time_s": 0.0,
+    "fold": 0,
+    "params": {
+      "n_features": 3,
+      "features": [
+        "FIT101",
+        "LIT101",
+        "FIT102"
+      ]
+    }
+  },
+  {
+    "experiment": "ablation_physical_features",
+    "dataset": "swat",
+    "model": "IsolationForest",
+    "metrics": {
+      "accuracy": 0.8591,
+      "precision": 0.050746268656716415,
+      "recall": 0.1007905138339921,
+      "f1": 0.06750496360026473,
+      "false_positive_rate": 0.10048451653676006,
+      "confusion_matrix": [
+        [
+          8540,
+          954
+        ],
+        [
+          455,
+          51
+        ]
+      ],
+      "roc_auc": 0.4990553634456878,
+      "pr_auc": 0.050663738618407776
+    },
+    "training_time_s": 0.8942182999999204,
+    "inference_time_s": 0.0,
+    "fold": 0,
+    "params": {
+      "n_features": 5,
+      "features": [
+        "FIT101",
+        "LIT101",
+        "FIT102",
+        "LIT102",
+        "FIT103"
+      ]
+    }
+  },
+  {
+    "experiment": "ablation_physical_features",
+    "dataset": "swat",
+    "model": "IsolationForest",
+    "metrics": {
+      "accuracy": 0.8578,
+      "precision": 0.04921259842519685,
+      "recall": 0.09881422924901186,
+      "f1": 0.0657030223390276,
+      "false_positive_rate": 0.10174847271961239,
+      "confusion_matrix": [
+        [
+          8528,
+          966
+        ],
+        [
+          456,
+          50
+        ]
+      ],
+      "roc_auc": 0.49863092229667,
+      "pr_auc": 0.04996102069626711
+    },
+    "training_time_s": 0.8764739999987796,
+    "inference_time_s": 0.0,
+    "fold": 0,
+    "params": {
+      "n_features": 8,
+      "features": [
+        "FIT101",
+        "LIT101",
+        "FIT102",
+        "LIT102",
+        "FIT103",
+        "LIT103",
+        "FIT104",
+        "LIT104"
+      ]
+    }
+  },
+  {
+    "experiment": "ablation_physical_features",
+    "dataset": "swat",
+    "model": "IsolationForest",
+    "metrics": {
+      "accuracy": 0.856,
+      "precision": 0.04922779922779923,
+      "recall": 0.1007905138339921,
+      "f1": 0.06614785992217899,
+      "false_positive_rate": 0.10374973667579523,
+      "confusion_matrix": [
+        [
+          8509,
+          985
+        ],
+        [
+          455,
+          51
+        ]
+      ],
+      "roc_auc": 0.513194312030648,
+      "pr_auc": 0.051767138846353575
+    },
+    "training_time_s": 0.9788611999993009,
+    "inference_time_s": 0.0,
+    "fold": 0,
+    "params": {
+      "n_features": 16,
+      "features": [
+        "FIT101",
+        "LIT101",
+        "FIT102",
+        "LIT102",
+        "FIT103",
+        "LIT103",
+        "FIT104",
+        "LIT104",
+        "P101",
+        "P102",
+        "MV101",
+        "MV201",
+        "MV301",
+        "MV401",
+        "P101_Freq",
+        "P102_Freq"
+      ]
+    }
+  }
+]

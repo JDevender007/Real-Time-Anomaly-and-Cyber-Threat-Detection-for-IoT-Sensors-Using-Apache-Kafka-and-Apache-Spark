@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT Cyber-Physical Security</title>
+  <link rel="stylesheet" href="/dashboard/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>IoT Cyber-Physical Security</h1>
+    <span class="subtitle">Kafka + Spark + ML | Physical Anomaly &amp; Cyber Threat Detection</span>
+    <div class="system-status" id="system-status">Connecting...</div>
+  </header>
+
+  <main>
+    <!-- Overview Cards -->
+    <section class="cards">
+      <div class="card">
+        <span class="label">Total Alerts</span>
+        <span class="value" id="metric-total-alerts">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Critical</span>
+        <span class="value critical pulse" id="metric-critical">0</span>
+      </div>
+      <div class="card">
+        <span class="label">High</span>
+        <span class="value high" id="metric-high">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Medium</span>
+        <span class="value warning" id="metric-medium">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Devices</span>
+        <span class="value" id="metric-devices">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Physical Anomalies</span>
+        <span class="value warning" id="metric-anomalies">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Cyber Threats</span>
+        <span class="value attack" id="metric-threats">0</span>
+      </div>
+    </section>
+
+    <!-- Live Events + Risk -->
+    <div class="grid2">
+      <section class="panel">
+        <h2>Live Alerts Feed</h2>
+        <div style="max-height:400px; overflow-y:auto;">
+          <table id="live-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Device</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>Risk</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Severity Distribution</h2>
+        <div class="risk-bars" id="risk-bars"></div>
+        <hr style="border-color:var(--border); margin:1rem 0;">
+        <h2>Model Performance</h2>
+        <div id="model-bars"></div>
+      </section>
+    </div>
+
+    <!-- Physical + Cyber detail tables -->
+    <div class="grid2">
+      <section class="panel">
+        <h2>Recent Physical Anomalies</h2>
+        <div style="max-height:300px; overflow-y:auto;">
+          <table id="anomaly-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Device</th>
+                <th>Score</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Recent Cyber Threats</h2>
+        <div style="max-height:300px; overflow-y:auto;">
+          <table id="threat-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Device</th>
+                <th>RF Pred</th>
+                <th>XGB Pred</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- System Health -->
+    <section class="panel">
+      <h2>System Health</h2>
+      <div class="health-grid" id="health-grid"></div>
+    </section>
+  </main>
+
+  <script src="/dashboard/static/js/dashboard.js"></script>
+</body>
+</html>

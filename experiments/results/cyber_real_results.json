@@ -1,0 +1,52 @@
+{
+  "rf_ciciot2023": {
+    "accuracy": 0.99405,
+    "f1": 0.9969436239886991,
+    "precision": 0.9999587815836115,
+    "recall": 0.9939465948315597,
+    "roc_auc": 0.9993923805047095,
+    "confusion_matrix": [
+      [
+        2365,
+        4
+      ],
+      [
+        591,
+        97040
+      ]
+    ],
+    "train_time_s": 11.60757851600647
+  },
+  "xgb_ciciot2023": {
+    "accuracy": 0.99616,
+    "f1": 0.9980324441757273,
+    "precision": 0.9985236069103399,
+    "recall": 0.9975417643986029,
+    "roc_auc": 0.9994355972170245,
+    "confusion_matrix": [
+      [
+        2225,
+        144
+      ],
+      [
+        240,
+        97391
+      ]
+    ],
+    "train_time_s": 7.252188444137573
+  },
+  "cross_dataset_rf": {
+    "train": "CICIoT2023",
+    "test": "Edge-IIoTSet",
+    "accuracy": 0.8452027569337394,
+    "f1": 0.9161082745597592,
+    "roc_auc": 0.5
+  },
+  "cross_dataset_xgb": {
+    "train": "CICIoT2023",
+    "test": "Edge-IIoTSet",
+    "accuracy": 0.8452027569337394,
+    "f1": 0.9161082745597592,
+    "roc_auc": 0.5
+  }
+}

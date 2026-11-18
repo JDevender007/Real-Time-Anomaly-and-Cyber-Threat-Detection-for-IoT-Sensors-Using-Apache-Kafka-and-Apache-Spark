@@ -1,0 +1,118 @@
+{
+  "dataset": "swat",
+  "total_samples": 100000,
+  "train_samples": 80000,
+  "test_samples": 20000,
+  "n_features": 51,
+  "features": [
+    "FIT101",
+    "LIT101",
+    "MV101",
+    "P101",
+    "P102",
+    "AIT201",
+    "AIT202",
+    "AIT203",
+    "FIT201",
+    "MV201",
+    "P201",
+    "P202",
+    "P203",
+    "P204",
+    "P205",
+    "P206",
+    "DPIT301",
+    "FIT301",
+    "LIT301",
+    "MV301",
+    "MV302",
+    "MV303",
+    "MV304",
+    "P301",
+    "P302",
+    "AIT401",
+    "AIT402",
+    "FIT401",
+    "LIT401",
+    "P401",
+    "P402",
+    "P403",
+    "P404",
+    "UV401",
+    "AIT501",
+    "AIT502",
+    "AIT503",
+    "AIT504",
+    "FIT501",
+    "FIT502",
+    "FIT503",
+    "FIT504",
+    "P501",
+    "P502",
+    "PIT501",
+    "PIT502",
+    "PIT503",
+    "FIT601",
+    "P601",
+    "P602",
+    "P603"
+  ],
+  "models": {
+    "isolation_forest": {
+      "metrics": {
+        "accuracy": 0.9221,
+        "precision": 0.403,
+        "recall": 0.6888888888888889,
+        "f1": 0.5085173501577287,
+        "false_positive_rate": 0.06340945300053107,
+        "confusion_matrix": [
+          [
+            17636,
+            1194
+          ],
+          [
+            364,
+            806
+          ]
+        ],
+        "roc_auc": 0.869968135953266,
+        "pr_auc": 0.5527543052335656
+      },
+      "training_time": 2.6641652584075928,
+      "params": {
+        "n_estimators": 200,
+        "contamination": 0.1
+      }
+    },
+    "autoencoder": {
+      "metrics": {
+        "accuracy": 0.90845,
+        "precision": 0.19140989729225025,
+        "recall": 0.1752136752136752,
+        "f1": 0.18295403837572513,
+        "false_positive_rate": 0.045990440785979816,
+        "confusion_matrix": [
+          [
+            17964,
+            866
+          ],
+          [
+            965,
+            205
+          ]
+        ],
+        "roc_auc": 0.7985506851677855,
+        "pr_auc": 0.20601668392902914
+      },
+      "training_time": 58.68337321281433,
+      "params": {
+        "encoding_dim": 16,
+        "hidden_dims": [
+          32,
+          24
+        ],
+        "epochs": 30
+      }
+    }
+  }
+}

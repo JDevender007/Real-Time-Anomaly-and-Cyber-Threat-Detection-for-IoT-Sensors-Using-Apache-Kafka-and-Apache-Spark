@@ -1,0 +1,28 @@
+{
+  "dataset": "swat+wadi_improved",
+  "strategies": [
+    "pca",
+    "smote",
+    "improved_ae",
+    "if_tuning",
+    "alpha_optimization"
+  ],
+  "n_features_original": 178,
+  "n_features_selected": 50,
+  "pca_components": 50,
+  "smote_samples": 91930,
+  "alpha": 0.7500000000000002,
+  "epochs": 100,
+  "training_time_seconds": 755.4635803699493,
+  "hybrid_metrics": {
+    "accuracy": 0.8657,
+    "precision": 0.144,
+    "recall": 0.0729483282674772,
+    "f1": 0.0968392737054472,
+    "fpr": 0.04748696327526906
+  },
+  "if_only_metrics": {
+    "accuracy": 0.8655,
+    "f1": 0.09549428379287156
+  }
+}
