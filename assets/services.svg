@@ -3,32 +3,32 @@
 <rect width="900" height="230" rx="14" fill="#0a0f18" stroke="#30363d"/>
 <text x="450" y="28" text-anchor="middle" style="font-family:Segoe UI,Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;fill:#e6edf3">Docker Compose stack: 10 services</text><g><rect x="10" y="48" width="166" height="74" rx="10" fill="#0d1117" stroke="#60a5fa" stroke-opacity="0.7"/>
 <rect x="10" y="48" width="166" height="74" rx="10" fill="#60a5fa" opacity="0.08"/>
-<circle cx="26" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="0.0s" repeatCount="indefinite"/></circle>
+<circle cx="26" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="0.0s" repeatCount="indefinite"/></circle>
 <text x="40" y="73" class="n" fill="#60a5fa">postgres</text><text x="26" y="102" class="p">5432</text></g><g><rect x="186" y="48" width="166" height="74" rx="10" fill="#0d1117" stroke="#fbbf24" stroke-opacity="0.7"/>
 <rect x="186" y="48" width="166" height="74" rx="10" fill="#fbbf24" opacity="0.08"/>
-<circle cx="202" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="0.2s" repeatCount="indefinite"/></circle>
+<circle cx="202" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="0.3s" repeatCount="indefinite"/></circle>
 <text x="216" y="73" class="n" fill="#fbbf24">kafka</text><text x="202" y="102" class="p">9092</text></g><g><rect x="362" y="48" width="166" height="74" rx="10" fill="#0d1117" stroke="#fb923c" stroke-opacity="0.7"/>
 <rect x="362" y="48" width="166" height="74" rx="10" fill="#fb923c" opacity="0.08"/>
-<circle cx="378" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="0.4s" repeatCount="indefinite"/></circle>
+<circle cx="378" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="0.6s" repeatCount="indefinite"/></circle>
 <text x="392" y="73" class="n" fill="#fb923c">spark-master</text><text x="378" y="102" class="p">8080 / 7077</text></g><g><rect x="538" y="48" width="166" height="74" rx="10" fill="#0d1117" stroke="#fb923c" stroke-opacity="0.7"/>
 <rect x="538" y="48" width="166" height="74" rx="10" fill="#fb923c" opacity="0.08"/>
-<circle cx="554" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="0.6s" repeatCount="indefinite"/></circle>
+<circle cx="554" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="0.9s" repeatCount="indefinite"/></circle>
 <text x="568" y="73" class="n" fill="#fb923c">spark-worker</text><text x="554" y="102" class="p">2 GB, 2 cores</text></g><g><rect x="714" y="48" width="166" height="74" rx="10" fill="#0d1117" stroke="#34d399" stroke-opacity="0.7"/>
 <rect x="714" y="48" width="166" height="74" rx="10" fill="#34d399" opacity="0.08"/>
-<circle cx="730" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="0.8s" repeatCount="indefinite"/></circle>
+<circle cx="730" cy="68" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="1.2s" repeatCount="indefinite"/></circle>
 <text x="744" y="73" class="n" fill="#34d399">api</text><text x="730" y="102" class="p">8000</text></g><g><rect x="10" y="134" width="166" height="74" rx="10" fill="#0d1117" stroke="#22d3ee" stroke-opacity="0.7"/>
 <rect x="10" y="134" width="166" height="74" rx="10" fill="#22d3ee" opacity="0.08"/>
-<circle cx="26" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="1.0s" repeatCount="indefinite"/></circle>
+<circle cx="26" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="1.5s" repeatCount="indefinite"/></circle>
 <text x="40" y="159" class="n" fill="#22d3ee">dashboard</text><text x="26" y="188" class="p">8501</text></g><g><rect x="186" y="134" width="166" height="74" rx="10" fill="#0d1117" stroke="#f43f5e" stroke-opacity="0.7"/>
 <rect x="186" y="134" width="166" height="74" rx="10" fill="#f43f5e" opacity="0.08"/>
-<circle cx="202" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="1.2s" repeatCount="indefinite"/></circle>
+<circle cx="202" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="1.8s" repeatCount="indefinite"/></circle>
 <text x="216" y="159" class="n" fill="#f43f5e">simulator</text><text x="202" y="188" class="p">attack + sensor sim</text></g><g><rect x="362" y="134" width="166" height="74" rx="10" fill="#0d1117" stroke="#a78bfa" stroke-opacity="0.7"/>
 <rect x="362" y="134" width="166" height="74" rx="10" fill="#a78bfa" opacity="0.08"/>
-<circle cx="378" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="1.4s" repeatCount="indefinite"/></circle>
+<circle cx="378" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="2.1s" repeatCount="indefinite"/></circle>
 <text x="392" y="159" class="n" fill="#a78bfa">streaming</text><text x="378" y="188" class="p">python | spark mode</text></g><g><rect x="538" y="134" width="166" height="74" rx="10" fill="#0d1117" stroke="#fb923c" stroke-opacity="0.7"/>
 <rect x="538" y="134" width="166" height="74" rx="10" fill="#fb923c" opacity="0.08"/>
-<circle cx="554" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="1.6s" repeatCount="indefinite"/></circle>
+<circle cx="554" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="2.4s" repeatCount="indefinite"/></circle>
 <text x="568" y="159" class="n" fill="#fb923c">spark-job</text><text x="554" y="188" class="p">spark-submit</text></g><g><rect x="714" y="134" width="166" height="74" rx="10" fill="#0d1117" stroke="#c084fc" stroke-opacity="0.7"/>
 <rect x="714" y="134" width="166" height="74" rx="10" fill="#c084fc" opacity="0.08"/>
-<circle cx="730" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.25;1" dur="2s" begin="1.8s" repeatCount="indefinite"/></circle>
+<circle cx="730" cy="154" r="5" fill="#3fb950"><animate attributeName="opacity" values="1;0.4;1" dur="4s" begin="2.7s" repeatCount="indefinite"/></circle>
 <text x="744" y="159" class="n" fill="#c084fc">replayer</text><text x="730" y="188" class="p">10 / 10 msg/s</text></g></svg>
